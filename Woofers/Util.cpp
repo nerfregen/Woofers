@@ -1,5 +1,7 @@
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string>
 
 namespace Util
 {
@@ -21,5 +23,20 @@ namespace Util
 				printf("%c", isprint(buf[i + j]) ? buf[i + j] : '.');
 			printf("\n");
 		}
+	}
+
+	int* IpToBytes(const char *ipAddress, int* arrayToFill)
+	{
+		std::string workingString = ipAddress;
+
+		for (std::size_t end = workingString.find("."), start = 0, index = 0; 
+			 end != std::string::npos; 
+			 end = workingString.find(".", start), start = end + 1, index++)
+		{
+			// Get each section and convert the string to an integer
+			arrayToFill[index] = atoi(workingString.substr(start, end - start).c_str());
+		}
+
+		return arrayToFill;
 	}
 }

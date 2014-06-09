@@ -1,11 +1,15 @@
 #pragma comment(lib, "ws2_32.lib") 
 #pragma comment(lib, "cryptlib.lib")
+#pragma comment(lib, "minini.lib")
 
 #include <iostream>
 
 #include "cryptopp/rsa.h"
 #include "cryptopp/osrng.h"
 
+#include "minini\minIni.h"
+
+#include "IniHelper.h"
 #include "Util.h"
 
 #include "Packet.h"
@@ -160,6 +164,9 @@ namespace Woofers
 					}
 					else if (listType == 1)
 					{
+						int ipAddress[4];
+						Util::IpToBytes(Woofers::IniHelper::Instance().GetString("AccountManager", "Server").c_str(), ipAddress);
+						int port = Woofers::IniHelper::Instance().GetLong("AccountManager", "Port");
 						char numServers = 11;
 						int bufferLoc = 5;	// Start adding servers at this array index and update it.
 						// Make up some servers. Those should come from the database or be connected to the AuthServer.
@@ -170,11 +177,12 @@ namespace Woofers
 						for (int i = 0; i < numServers; i++)
 						{
 							authPacket.AddValue(i + 1, 1);	// Shard ID
-							authPacket.AddValue(127, 1);	// IP Address (4 bytes)
-							authPacket.AddValue(0, 1);		// 127.0.0.1
-							authPacket.AddValue(0, 1);
-							authPacket.AddValue(1, 1);
-							authPacket.AddValue(7000, 4);	// DbServer UDP Port
+							// IP Address (4 bytes)
+							for (int j = 0; j < 4; j++)
+							{
+								authPacket.AddValue(ipAddress[j], 1);
+							}
+							authPacket.AddValue(port, 4);	// DbServer UDP Port
 							authPacket.AddValue(0, 2);		// Age Limit and PVP Server flags.
 							authPacket.AddValue((numServers - i) * 100, 2);	// Number of players logged in.
 							authPacket.AddValue(2000, 2);	// Max players that can log in.
@@ -344,10 +352,10 @@ int main()
 		std::cout << " Network Protocol Translator for City of Heroes" << std::string(7, ' ') << "v0.01" << std::endl;
 		std::cout << std::string(60, '=') << std::endl << std::endl;
 
-		if (0)
-			account = new AccountManager::Account();
-		else
+		if (Woofers::IniHelper::Instance().GetString("AccountManager", "Protocol") == "FakeAuth")
 			account = new AccountManager::FakeAuth();
+		else
+			account = new AccountManager::Account();
 
 		account->Initialize();
 

@@ -25,6 +25,12 @@
     <Filter Include="Source Files\AccountManager">
       <UniqueIdentifier>{f4a4d160-2f50-4770-b336-6dcde53cb015}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Helpers">
+      <UniqueIdentifier>{f04fa5a3-6ef2-4132-b61b-8a7e93673949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Helpers">
+      <UniqueIdentifier>{5d633259-c6dc-4ba4-96f9-828a31f153c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Woofers.cpp">
@@ -42,6 +48,9 @@
     <ClCompile Include="Packet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IniHelper.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Util.h">
@@ -58,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="Packet.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IniHelper.h">
+      <Filter>Header Files\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
