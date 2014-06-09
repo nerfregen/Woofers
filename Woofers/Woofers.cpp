@@ -167,16 +167,18 @@ namespace Woofers
 						int ipAddress[4];
 						Util::IpToBytes(Woofers::IniHelper::Instance().GetString("AccountManager", "Server").c_str(), ipAddress);
 						int port = Woofers::IniHelper::Instance().GetLong("AccountManager", "Port");
-						char numServers = 11;
+						int serverId = Woofers::IniHelper::Instance().GetLong("AccountManager", "Shard");
+						char numServers = 1;
 						int bufferLoc = 5;	// Start adding servers at this array index and update it.
-						// Make up some servers. Those should come from the database or be connected to the AuthServer.
+
+						// Return the server from the FakeAuth config for now.
 						authPacket.Reset(AUTHSERVER_SERVER_LIST);
 						authPacket.AddValue(numServers, 1);
 						authPacket.AddValue(lastServer, 1);
 
 						for (int i = 0; i < numServers; i++)
 						{
-							authPacket.AddValue(i + 1, 1);	// Shard ID
+							authPacket.AddValue(serverId, 1);	// Shard ID
 							// IP Address (4 bytes)
 							for (int j = 0; j < 4; j++)
 							{
