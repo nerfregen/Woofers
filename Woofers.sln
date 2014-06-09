@@ -6,9 +6,12 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Woofers", "Woofers\Woofers.vcxproj", "{D3ADC938-6BDA-455F-97A7-FA4AED65C3D2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{3423EC9A-52E4-4A4D-9753-EDEBC38785EF} = {3423EC9A-52E4-4A4D-9753-EDEBC38785EF}
+		{2F8DCAC3-E6D8-4897-A243-67F5002ECF6C} = {2F8DCAC3-E6D8-4897-A243-67F5002ECF6C}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cryptlib", "Common\cryptopp\cryptlib.vcxproj", "{3423EC9A-52E4-4A4D-9753-EDEBC38785EF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "minini", "Common\minini\minini.vcxproj", "{2F8DCAC3-E6D8-4897-A243-67F5002ECF6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +37,12 @@ Global
 		{3423EC9A-52E4-4A4D-9753-EDEBC38785EF}.Release|Win32.Build.0 = Release|Win32
 		{3423EC9A-52E4-4A4D-9753-EDEBC38785EF}.Release|x64.ActiveCfg = Release|x64
 		{3423EC9A-52E4-4A4D-9753-EDEBC38785EF}.Release|x64.Build.0 = Release|x64
+		{2F8DCAC3-E6D8-4897-A243-67F5002ECF6C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2F8DCAC3-E6D8-4897-A243-67F5002ECF6C}.Debug|Win32.Build.0 = Debug|Win32
+		{2F8DCAC3-E6D8-4897-A243-67F5002ECF6C}.Debug|x64.ActiveCfg = Debug|Win32
+		{2F8DCAC3-E6D8-4897-A243-67F5002ECF6C}.Release|Win32.ActiveCfg = Release|Win32
+		{2F8DCAC3-E6D8-4897-A243-67F5002ECF6C}.Release|Win32.Build.0 = Release|Win32
+		{2F8DCAC3-E6D8-4897-A243-67F5002ECF6C}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
